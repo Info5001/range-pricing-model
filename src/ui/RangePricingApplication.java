@@ -7,6 +7,10 @@ package ui;
 
 import model.Business.Business;
 import model.Business.ConfigureABusiness;
+import model.ProductManagement.ProductCatalog;
+import model.ProductManagement.ProductsReport;
+import model.Supplier.Supplier;
+import model.Supplier.SupplierDirectory;
 
 /**
  *
@@ -19,6 +23,31 @@ public class RangePricingApplication {
    */
   public static void main(String[] args) {
     // TODO code application logic here
-    Business business = ConfigureABusiness.initialize();
+
+
+    // 1. Populate the model +
+
+    Business business = ConfigureABusiness.createABusinessAndLoadALotOfData("Xerox", 50, 10, 30, 100, 10);
+
+   // 2. Maybe some interaction with the user (optional)
+
+    
+   // 3. Show some analytics (Summerizing, comparing, sorting, grouping data by some criteria)
+
+    
+
+
+
+    //business.printShortInfo();
+
+    SupplierDirectory sd = business.getSupplierDirectory();
+    Supplier randomSupplier = sd.pickRandomSupplier();
+    ProductCatalog pd = randomSupplier.getProductCatalog();
+    ProductsReport myFirstReport = pd.generatProductPerformanceReport();
+    myFirstReport.printProductReport();
+
+
+
+
   }
 }

@@ -6,6 +6,7 @@
 package model.ProductManagement;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -49,5 +50,18 @@ public class ProductsReport {
 
         return productsalwaysabovetarget;
     }
+    
 
+    public void printProductReport(){
+        System.out.println("Product Performace Report");
+        System.out.println("Below are product name, actual sales and number of sales above target.");
+        for (ProductSummary ps: productsummarylist){
+            int index = productsummarylist.indexOf(ps);
+            System.out.print((index+1) + " ");
+            ps.printProductSummary();
+        }
+
+        
+        
+    }
 }

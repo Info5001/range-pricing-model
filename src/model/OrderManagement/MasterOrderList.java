@@ -55,4 +55,10 @@ for(Order order: orders){
 return sum;
     }
 
+    public void printShortInfo(){
+        System.out.println("Checking what's inside the master order list.");
+        System.out.println("There are " + orders.size() + " order.");
+    }
+
+
 }

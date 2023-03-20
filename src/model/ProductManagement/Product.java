@@ -19,13 +19,15 @@ public class Product {
     private int ceilingPrice;
     private int targetPrice;
     ArrayList<OrderItem> orderitems;
-        public Product( int fp, int cp, int tp) {
+    
+    public Product(int fp, int cp, int tp) {
 
         floorPrice = fp;
         ceilingPrice = cp;
         targetPrice = tp;
         orderitems = new ArrayList();
     }
+    
     public Product(String n, int fp, int cp, int tp) {
         name = n;
         floorPrice = fp;
@@ -92,6 +94,11 @@ public class Product {
     public String toString(){
         return name;
     }
+
+    public String getName(){
+        return name;
+    }
+
     public int getFloorPrice(){
         return floorPrice;
     }
