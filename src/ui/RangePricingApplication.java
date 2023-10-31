@@ -24,30 +24,10 @@ public class RangePricingApplication {
   public static void main(String[] args) {
     // TODO code application logic here
 
-
-    // 1. Populate the model +
-
-    Business business = ConfigureABusiness.createABusinessAndLoadALotOfData("Xerox", 50, 10, 30, 100, 10);
-
-   // 2. Maybe some interaction with the user (optional)
-
-    
-   // 3. Show some analytics (Summerizing, comparing, sorting, grouping data by some criteria)
-
-    
-
-
-
-    //business.printShortInfo();
-
-    SupplierDirectory sd = business.getSupplierDirectory();
-    Supplier randomSupplier = sd.pickRandomSupplier();
-    ProductCatalog pd = randomSupplier.getProductCatalog();
-    ProductsReport myFirstReport = pd.generatProductPerformanceReport();
-    myFirstReport.printProductReport();
-
-
-
+    Business business = ConfigureABusiness.createABusinessAndLoadALotOfData("Amazon", 20, 10, 30, 100, 10);
+    business.printShortInfo();
 
   }
+
+
 }

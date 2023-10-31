@@ -33,6 +33,8 @@ public class Order {
         salesperson = null;
         status = "in process";
     }
+
+
     public Order(CustomerProfile cp, SalesPersonProfile ep) {
         orderitems = new ArrayList();
         customer = cp;
