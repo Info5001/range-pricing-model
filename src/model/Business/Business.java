@@ -31,6 +31,7 @@ public class Business {
     String name;
     PersonDirectory persondirectory;
     MasterOrderList masterorderlist;
+    CustomerDirectory customers;
     SupplierDirectory suppliers;
     MarketCatalog marketcatalog;
     ChannelCatalog channelcatalog;
@@ -110,13 +111,6 @@ public class Business {
     }
         public EmployeeDirectory getEmployeeDirectory() {
         return employeedirectory;
-    }
-
-    public void printShortInfo(){
-        System.out.println("Checking what's inside the business hierarchy.");
-        suppliers.printShortInfo();
-        customerdirectory.printShortInfo();
-        masterorderlist.printShortInfo();
     }
 
 }

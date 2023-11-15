@@ -6,7 +6,6 @@
 package model.Supplier;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  *
@@ -34,22 +33,5 @@ public class SupplierDirectory {
     public ArrayList<Supplier> getSuplierList(){
         return suppliers;
     }
-
-    public Supplier pickRandomSupplier(){
-        if (suppliers.size() == 0) return null;
-        Random r = new Random();
-        int randomIndex = r.nextInt(suppliers.size());
-        return suppliers.get(randomIndex);
-    }
-
-
-    public void printShortInfo(){
-        System.out.println("Checking what's inside the supplier directory.");
-        System.out.println("There are " + suppliers.size() + " suppliers.");
-        for (Supplier s: suppliers){
-            s.printShortInfo();
-        }
-    }
-
     
 }

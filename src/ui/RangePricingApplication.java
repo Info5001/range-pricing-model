@@ -7,10 +7,6 @@ package ui;
 
 import model.Business.Business;
 import model.Business.ConfigureABusiness;
-import model.ProductManagement.ProductCatalog;
-import model.ProductManagement.ProductsReport;
-import model.Supplier.Supplier;
-import model.Supplier.SupplierDirectory;
 
 /**
  *
@@ -23,10 +19,7 @@ public class RangePricingApplication {
    */
   public static void main(String[] args) {
     // TODO code application logic here
-
-    Business business = ConfigureABusiness.createABusinessAndLoadALotOfData("Amazon", 20, 10, 30, 100, 10);
-    business.printShortInfo();
-
+    Business business = ConfigureABusiness.initialize();
   }
 
 

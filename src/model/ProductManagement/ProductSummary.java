@@ -44,9 +44,4 @@ public class ProductSummary {
     public boolean isProductAlwaysAboveTarget(){
         return false; // to be implemented
     }
-
-    public void printProductSummary(){
-        System.out.println(subjectproduct.getName() + " | " + acutalsalesvolume + " | " + numberofsalesabovetarget + " | " + productpriceperformance);
-    }
-
 }

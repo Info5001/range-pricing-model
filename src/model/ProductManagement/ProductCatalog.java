@@ -6,7 +6,6 @@
 package model.ProductManagement;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  *
@@ -26,15 +25,13 @@ public class ProductCatalog {
         type = "unknown";
         products = new ArrayList();
     }
-
     public Product newProduct(int fp, int cp, int tp) {
         Product p = new Product(fp, cp, tp);
         products.add(p);
         return p;
     }
-
     public Product newProduct(String n, int fp, int cp, int tp) {
-        Product p = new Product(n, fp, cp, tp);
+        Product p = new Product(n,fp, cp, tp);
         products.add(p);
         return p;
     }
@@ -53,17 +50,5 @@ public class ProductCatalog {
     public ArrayList<Product> getProductList(){
         return products;
     }
-
-    public Product pickRandomProduct(){
-        if (products.size() == 0) return null;
-        Random r = new Random();
-        int randomIndex = r.nextInt(products.size());
-        return products.get(randomIndex);
-    }
-
-    public void printShortInfo(){
-        System.out.println("There are " + products.size() +  " products in this catalog");
-    }
-
 
 }

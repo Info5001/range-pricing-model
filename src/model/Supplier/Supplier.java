@@ -18,7 +18,7 @@ import model.ProductManagement.ProductsReport;
 public class Supplier {
     String name;
     ProductCatalog productcatalog;
-    ProductsReport productsreport;
+   ProductsReport productsreport;
     public Supplier(String n){
         name = n;
         productcatalog = new ProductCatalog("software");
@@ -41,19 +41,9 @@ public class Supplier {
     public String getName(){
         return name;
     }
-        
-    
-    public ProductCatalog getProductCatalog(){
+        public ProductCatalog getProductCatalog(){
         return productcatalog;
     }
-    
-    public void printShortInfo(){
-        System.out.println("Checking supplier " + name);
-        productcatalog.printShortInfo();
-    }
-
-
-
     //add supplier product ..
     
     //update supplier product ...
