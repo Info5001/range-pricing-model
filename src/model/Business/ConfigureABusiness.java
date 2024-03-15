@@ -32,9 +32,49 @@ import model.UserAccountManagement.UserAccountDirectory;
  */
 public class ConfigureABusiness {
 
-  public static Business initialize() {
-    Business business = new Business("Xerox");
+  public static Business initialize(String name, int numberOfSuppliers, int numberOfProducts, int numberOfCustomers) {
+    Business business = new Business(name);
+
+    loadSuppliers(business, numberOfSuppliers);
+    loadProducts(business, numberOfProducts);
+    loadCustomers(business, numberOfCustomers);
+    // create suppliers
+    // create products
+    // create customers
+    // create salespersons
+    // create orders
+    // create order items
 
     return business;
   }
+
+  public static void loadSuppliers(Business business, int numberOfSuppliers) {
+    SupplierDirectory sd = business.getSupplierDirectory();
+
+    for (int index = 1; index <= numberOfSuppliers; index++) {
+      sd.newSupplier("Supplier #" + index);
+    }
+  }
+
+  public static void loadProducts(Business business, int numberOfProducts) {
+    SupplierDirectory sd = business.getSupplierDirectory();
+
+    for (int index = 0; index < numberOfProducts; index++) {
+      // pick a supplier randomly
+      Supplier randomSupplier = sd.getRandomSupplier();
+      if (randomSupplier == null) {
+        System.out.println("No suppliers found");
+        return;
+      }
+      // get its product catalog
+      ProductCatalog pc = randomSupplier.getProductCatalog();
+      // add a new product
+      pc.newProduct("Product #" + index, 100, 500, 200);
+    }
+
+  }
+
+  public static void loadCustomers(Business business, int numberOfCustomers) {
+  }
+
 }

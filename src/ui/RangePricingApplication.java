@@ -19,8 +19,15 @@ public class RangePricingApplication {
    */
   public static void main(String[] args) {
     // TODO code application logic here
-    Business business = ConfigureABusiness.initialize();
-  }
 
+    int supplierCount = 100;
+    int productCount = 500;
+    int customerCount = 10;
+
+    Business business = ConfigureABusiness.initialize("Wayfair", supplierCount, productCount, customerCount);
+
+    business.printBusinessInformation();
+
+  }
 
 }

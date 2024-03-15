@@ -6,32 +6,56 @@
 package model.Supplier;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
  * @author kal bugrara
  */
 public class SupplierDirectory {
-    ArrayList<Supplier> suppliers;
-    public SupplierDirectory(){
-        suppliers = new ArrayList();
+    ArrayList<Supplier> supplierList;
+
+    public SupplierDirectory() {
+        supplierList = new ArrayList();
     }
-    public Supplier newSupplier(String n){
+
+    public Supplier newSupplier(String n) {
         Supplier supplier = new Supplier(n);
-        suppliers.add(supplier);
+        supplierList.add(supplier);
         return supplier;
 
     }
-    public Supplier findSupplier(String id){
-        
-        for (Supplier supplier: suppliers){
-            
-            if(supplier.getName().equals(id)) return supplier;
+
+    public Supplier findSupplier(String id) {
+
+        for (Supplier supplier : supplierList) {
+
+            if (supplier.getName().equals(id))
+                return supplier;
         }
         return null;
-        }
-    public ArrayList<Supplier> getSuplierList(){
-        return suppliers;
     }
-    
+
+    public ArrayList<Supplier> getSuplierList() {
+        return supplierList;
+    }
+
+    public void printSupplierDirectoryInformation() {
+        System.out.println("Supplier Directory:");
+        for (Supplier eachSupplier : supplierList) {
+            eachSupplier.printSupplierInformation();
+        }
+
+    }
+
+    public Supplier getRandomSupplier() {
+        if (supplierList.size() == 0)
+            return null;
+
+        Random r = new Random();
+        int randomSupplierIndex = r.nextInt(supplierList.size());
+        Supplier randomSupplier = supplierList.get(randomSupplierIndex);
+        return randomSupplier;
+    }
+
 }
