@@ -6,6 +6,7 @@
 package model.Supplier;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -13,25 +14,35 @@ import java.util.ArrayList;
  */
 public class SupplierDirectory {
     ArrayList<Supplier> suppliers;
-    public SupplierDirectory(){
+
+    public SupplierDirectory() {
         suppliers = new ArrayList();
     }
-    public Supplier newSupplier(String n){
+
+    public Supplier newSupplier(String n) {
         Supplier supplier = new Supplier(n);
         suppliers.add(supplier);
         return supplier;
-
     }
-    public Supplier findSupplier(String id){
-        
-        for (Supplier supplier: suppliers){
-            
-            if(supplier.getName().equals(id)) return supplier;
+
+    public Supplier findSupplier(String id) {
+        for (Supplier supplier : suppliers) {
+            if (supplier.getName().equals(id))
+                return supplier;
         }
         return null;
-        }
-    public ArrayList<Supplier> getSuplierList(){
+    }
+
+    public ArrayList<Supplier> getSuplierList() {
         return suppliers;
     }
-    
+
+    public Supplier pickRandomSupplier() {
+        if (suppliers.size() == 0)
+            return null;
+        Random r = new Random();
+        int randomIndex = r.nextInt(suppliers.size());
+        return suppliers.get(randomIndex);
+    }
+
 }
