@@ -45,4 +45,14 @@ public class SupplierDirectory {
         return suppliers.get(randomIndex);
     }
 
+    public void printSupplierInformation(int supplierPreview) {
+        System.out.println("Supplier Directory:");
+        System.out.println("-------------------------------------");
+        System.out.println("Total number of suppliers: " + suppliers.size());
+        for (int i = 0; i < supplierPreview; i++) {
+            pickRandomSupplier().printSupplierInfo();
+        }
+
+    }
+
 }

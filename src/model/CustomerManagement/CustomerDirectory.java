@@ -6,6 +6,7 @@
 package model.CustomerManagement;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import model.Business.Business;
 import model.Personnel.Person;
@@ -41,16 +42,37 @@ public class CustomerDirectory {
                 return sp;
             }
         }
-            return null; //not found after going through the whole list
-         }
-        public CustomersReport generatCustomerPerformanceReport(){
+        return null; // not found after going through the whole list
+    }
+
+    public CustomersReport generatCustomerPerformanceReport() {
         CustomersReport customersreport = new CustomersReport();
-    
-        for(CustomerProfile cp: customerlist){
-            
+
+        for (CustomerProfile cp : customerlist) {
+
             CustomerSummary cs = new CustomerSummary(cp);
             customersreport.addCustomerSummary(cs);
         }
-        return customersreport; 
-    } 
+        return customersreport;
+    }
+
+    public CustomerProfile pickRandomCustomer() {
+        if (customerlist.size() == 0)
+            return null;
+        Random r = new Random();
+        int randomIndex = r.nextInt(customerlist.size());
+
+        return customerlist.get(randomIndex);
+    }
+
+    public void printCustomerInformation(int customerPreview) {
+        System.out.println("Customer directory:");
+        System.out.println("Total number of customers: " + customerlist.size());
+        System.out.println("Customer information preview, " + customerPreview + " random customers picked:");
+        for (int custIndex = 0; custIndex < customerPreview; custIndex++) {
+            pickRandomCustomer().printCustomerShortInfo();
+        }
+
+    }
+
 }

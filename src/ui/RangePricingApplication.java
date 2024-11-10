@@ -20,9 +20,9 @@ public class RangePricingApplication {
   public static void main(String[] args) {
     // TODO code application logic here
 
-    Business wayFair = ConfigureABusiness.initialize("WayFair", 100, 500, 50, 100);
+    Business wayFair = ConfigureABusiness.initialize("WayFair", 200, 500, 50, 200, 500, 10);
 
-    // wayFair.printBusinessInformation();
+    wayFair.printBusinessInformation();
 
   }
 

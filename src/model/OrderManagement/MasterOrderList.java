@@ -18,41 +18,47 @@ import model.SalesManagement.SalesPersonProfile;
 public class MasterOrderList {
     ArrayList<Order> orders;
     MasterOrderReport masterorderreport;
-    
-    public MasterOrderList(){
+
+    public MasterOrderList() {
         orders = new ArrayList();
-       
+
     }
-    
-    public Order newOrder(CustomerProfile cp){
-        Order o= new Order(cp);
+
+    public Order newOrder(CustomerProfile cp) {
+        Order o = new Order(cp);
         orders.add(o);
         return o;
-            
- 
     }
-    public Order newOrder(CustomerProfile cp, SalesPersonProfile spp){
-        Order o= new Order(cp, spp);
+
+    public Order newOrder(CustomerProfile cp, SalesPersonProfile spp) {
+        Order o = new Order(cp, spp);
         orders.add(o);
         return o;
-            
- 
     }
-    
-    public MasterOrderReport generateMasterOrderReport(){
-    masterorderreport = new MasterOrderReport();
-        
-    return masterorderreport;
-        
-}
 
-public int getSalesVolume(){
+    public MasterOrderReport generateMasterOrderReport() {
+        masterorderreport = new MasterOrderReport();
 
-int sum = 0;
-for(Order order: orders){
-    sum = sum + order.getOrderTotal();
-}
-return sum;
+        return masterorderreport;
+
+    }
+
+    public int getSalesVolume() {
+
+        int sum = 0;
+        for (Order order : orders) {
+            sum = sum + order.getOrderTotal();
+        }
+        return sum;
+    }
+
+    public void printOrderInformation() {
+        System.out.println("Master Order List:");
+        System.out.println("Total number of orders is " + orders.size());
+        for (Order o : orders) {
+            o.printOrderShortInfo();
+        }
+
     }
 
 }

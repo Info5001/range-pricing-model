@@ -6,9 +6,11 @@
 package model.Business;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import model.CustomerManagement.ChannelCatalog;
 import model.CustomerManagement.CustomerDirectory;
+import model.CustomerManagement.CustomerProfile;
 import model.CustomerManagement.MarketCatalog;
 import model.MarketingManagement.MarketingPersonDirectory;
 import model.OrderManagement.MasterOrderList;
@@ -46,7 +48,7 @@ public class Business {
         name = n;
         masterorderlist = new MasterOrderList();
         suppliers = new SupplierDirectory();
-//        solutionoffercatalog = new SolutionOfferCatalog();
+        // solutionoffercatalog = new SolutionOfferCatalog();
         persondirectory = new PersonDirectory();
         customerdirectory = new CustomerDirectory(this);
         salespersondirectory = new SalesPersonDirectory(this);
@@ -68,6 +70,7 @@ public class Business {
     public UserAccountDirectory getUserAccountDirectory() {
         return useraccountdirectory;
     }
+
     public MarketingPersonDirectory getMarketingPersonDirectory() {
         return marketingpersondirectory;
     }
@@ -94,7 +97,7 @@ public class Business {
 
     public int getHowManySupplierProductsAlwaysAboveTarget(String n) {
         ProductsReport productsreport = getSupplierPerformanceReport(n); // see above
-        int i = productsreport.getProductsAlwaysAboveTarget().size(); //return size of the arraylist
+        int i = productsreport.getProductsAlwaysAboveTarget().size(); // return size of the arraylist
         return i;
     }
 
@@ -109,8 +112,19 @@ public class Business {
     public MasterOrderList getMasterOrderList() {
         return masterorderlist;
     }
-        public EmployeeDirectory getEmployeeDirectory() {
+
+    public EmployeeDirectory getEmployeeDirectory() {
         return employeedirectory;
+    }
+
+    public void printBusinessInformation() {
+        System.out.println("Business: " + name);
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("---- Business Information ------------------------------------------");
+        suppliers.printSupplierInformation(5);
+        customerdirectory.printCustomerInformation(5);
+        masterorderlist.printOrderInformation();
+
     }
 
 }

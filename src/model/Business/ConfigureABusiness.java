@@ -35,7 +35,7 @@ import model.UserAccountManagement.UserAccountDirectory;
 public class ConfigureABusiness {
 
   public static Business initialize(String name, int supplierCount, int productPerSupplierCount, int randSuppliers,
-      int customerCount) {
+      int customerCount, int orderCount, int orderItemCount) {
     Business business = new Business(name);
     /**
      * TODO
@@ -52,8 +52,7 @@ public class ConfigureABusiness {
     loadSuppliers(supplierDirectory, supplierCount);
     loadProducts(business, productPerSupplierCount, randSuppliers);
     loadCustomers(customerDirectory, personDirectory, customerCount);
-
-    // loadOrders(masterOrderList, orderCount);
+    loadOrders(business, orderCount, orderItemCount);
 
     return business;
   }
@@ -78,7 +77,12 @@ public class ConfigureABusiness {
       int randomNumberOfProducts = r.nextInt(count);
 
       for (int index = 1; index <= randomNumberOfProducts; index++) {
-        pd.newProduct("Product " + index + " by " + randomSupplier.getName(), 0, 0, 0);
+
+        int randomFp = pickRandomNumber(80, 120);
+        int randomCp = pickRandomNumber(121, 150);
+        int randomTp = pickRandomNumber(90, 140);
+
+        pd.newProduct("Product " + index + " by " + randomSupplier.getName(), randomFp, randomCp, randomTp);
       }
 
     }
@@ -89,6 +93,59 @@ public class ConfigureABusiness {
       Person p = pd.newPerson("Person " + index);
       cd.newCustomerProfile(p);
     }
+  }
+
+  public static void loadOrders(Business b, int orderCount, int orderItemCount) {
+    /**
+     * TODO
+     * 
+     * 1. Pick a random customer
+     * 2. Create an empty order for this customer
+     * 3. Pick random product
+     * - 3a Pick a random supplier
+     * - 3b Make sure supplier has products
+     * - 3c Pick a product
+     * 4. Create an Order item
+     */
+
+    MasterOrderList mol = b.getMasterOrderList();
+    CustomerDirectory cd = b.getCustomerDirectory();
+    SupplierDirectory sd = b.getSupplierDirectory();
+
+    for (int orderIndex = 0; orderIndex < orderCount; orderIndex++) {
+      // 1. Pick a random customer
+      CustomerProfile randomCustomer = cd.pickRandomCustomer();
+      // 2. Created empty order
+      Order newOrder = mol.newOrder(randomCustomer);
+      // 3. Order items...
+      int randomOrderItemCount = pickRandomNumber(1, orderItemCount);
+
+      for (int orderItemIndex = 0; orderItemIndex < randomOrderItemCount; orderItemIndex++) {
+        Product randomProduct = null;
+
+        while (randomProduct == null) {
+          Supplier randomSupplier = sd.pickRandomSupplier();
+          ProductCatalog pc = randomSupplier.getProductCatalog();
+          if (!pc.isEmpty()) { // ! stands for not(pc.isEmpty())
+            randomProduct = pc.pickRandomProduct();
+          }
+        }
+
+        if (randomProduct != null) {
+          int price = pickRandomNumber(randomProduct.getFloorPrice(), randomProduct.getCeilingPrice());
+          int quantity = pickRandomNumber(5, 10);
+
+          newOrder.newOrderItem(randomProduct, price, quantity);
+        }
+      }
+    }
+  }
+
+  public static int pickRandomNumber(int lower, int upper) {
+    Random r = new Random();
+    int randomNumber = r.nextInt(upper - lower) + lower; // the result will be between lower and upper since
+                                                         // nextInt(num) generates from 0 to num.
+    return randomNumber;
   }
 
 }

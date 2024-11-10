@@ -96,4 +96,9 @@ public class Order {
     public void Submit() {
         status = "Submitted";
     }
+
+    public void printOrderShortInfo() {
+        System.out.println(
+                "Order placed by " + customer.getCustomerId() + ", with " + orderitems.size() + " order items.");
+    }
 }
