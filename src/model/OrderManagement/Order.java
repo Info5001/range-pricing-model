@@ -43,7 +43,7 @@ public class Order {
     }
 
     public OrderItem newOrderItem(Product p, int actualprice, int q) {
-        OrderItem oi = new OrderItem(p, actualprice, q);
+        OrderItem oi = new OrderItem(p, actualprice, q, this);
         orderitems.add(oi);
         return oi;
     }
@@ -55,6 +55,10 @@ public class Order {
             sum = sum + oi.getOrderItemTotal();
         }
         return sum;
+    }
+
+    public CustomerProfile getCustomerProfile() {
+        return customer;
     }
 
     public int getOrderPricePerformance() {

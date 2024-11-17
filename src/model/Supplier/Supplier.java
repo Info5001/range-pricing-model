@@ -7,6 +7,7 @@ package model.Supplier;
 
 import java.util.ArrayList;
 
+import model.ProductManagement.Product;
 import model.ProductManagement.ProductCatalog;
 import model.ProductManagement.ProductSummary;
 import model.ProductManagement.ProductsReport;
@@ -23,7 +24,6 @@ public class Supplier {
     public Supplier(String n) {
         name = n;
         productcatalog = new ProductCatalog("software");
-
     }
 
     public ProductsReport prepareProductsReport() {
@@ -38,6 +38,23 @@ public class Supplier {
             productsreport = prepareProductsReport();
         return productsreport.getProductsAlwaysAboveTarget();
 
+    }
+
+    public int getTotalSales() {
+        int total = 0;
+        for (Product eachProduct : productcatalog.getProductList()) {
+            total += eachProduct.getSalesVolume();
+        }
+        return total;
+
+    }
+
+    public Product getTopGrossingProduct() {
+        return productcatalog.getTopGrossingProduct();
+    }
+
+    public int getNumberOfDiffCustomers() {
+        return productcatalog.getNumberOfDiffCustomers();
     }
 
     public String getName() {
@@ -59,6 +76,7 @@ public class Supplier {
     public void printSupplierInfo() {
         System.out.println("Supplier name: " + name);
         productcatalog.printCatalogShortInfo();
+        productcatalog.generateAndPrintProductReport();
 
     }
 }

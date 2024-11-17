@@ -8,6 +8,8 @@ package model.ProductManagement;
 import java.util.ArrayList;
 import java.util.Random;
 
+import model.CustomerManagement.CustomerProfile;
+
 /**
  *
  * @author kal bugrara
@@ -44,7 +46,6 @@ public class ProductCatalog {
         ProductsReport productsreport = new ProductsReport();
 
         for (Product p : products) {
-
             ProductSummary ps = new ProductSummary(p);
             productsreport.addProductSummary(ps);
         }
@@ -67,7 +68,44 @@ public class ProductCatalog {
         return products.get(randomIndex);
     }
 
+    public Product getTopGrossingProduct() {
+        Product topProduct = null;
+        for (Product eachProduct : products) {
+            // add exception to the rule when topProduct is null
+            if (topProduct == null) {
+                topProduct = eachProduct;
+                continue;
+            }
+
+            // General rule to find max value
+            if (topProduct.getSalesVolume() < eachProduct.getSalesVolume()) {
+                topProduct = eachProduct;
+            }
+        }
+        return topProduct;
+    }
+
+    public int getNumberOfDiffCustomers() {
+        ArrayList<CustomerProfile> differentCustomers = new ArrayList<CustomerProfile>();
+
+        for (Product eachProduct : products) {
+            ArrayList<CustomerProfile> productCustomers = eachProduct.getCustomerList();
+            for (CustomerProfile cp : productCustomers) {
+                if (!differentCustomers.contains(cp)) {
+                    differentCustomers.add(cp);
+                }
+            }
+        }
+
+        return differentCustomers.size();
+    }
+
     public void printCatalogShortInfo() {
         System.out.println("" + products.size() + " in this catalog.");
+    }
+
+    public void generateAndPrintProductReport() {
+        ProductsReport newReport = generatProductPerformanceReport();
+        newReport.printProductReport();
     }
 }

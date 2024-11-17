@@ -45,6 +45,16 @@ public class SupplierDirectory {
         return suppliers.get(randomIndex);
     }
 
+    public SuppliersReport generateSuppliersReport() {
+        SuppliersReport newReport = new SuppliersReport();
+        for (Supplier eachSupplier : suppliers) {
+            newReport.addSupplier(eachSupplier);
+        }
+        newReport.sortByTopSales();
+
+        return newReport;
+    }
+
     public void printSupplierInformation(int supplierPreview) {
         System.out.println("Supplier Directory:");
         System.out.println("-------------------------------------");

@@ -7,6 +7,8 @@ package model.ProductManagement;
 
 import java.util.ArrayList;
 
+import model.CustomerManagement.CustomerProfile;
+import model.OrderManagement.Order;
 import model.OrderManagement.OrderItem;
 
 /**
@@ -18,7 +20,7 @@ public class Product {
     private int floorPrice;
     private int ceilingPrice;
     private int targetPrice;
-    ArrayList<OrderItem> orderitems;
+    ArrayList<OrderItem> orderitems; // <-- sales data source
 
     public Product(int fp, int cp, int tp) {
 
@@ -92,12 +94,30 @@ public class Product {
         return sum;
     }
 
+    public ArrayList<CustomerProfile> getCustomerList() {
+        ArrayList<CustomerProfile> allCustomers = new ArrayList<CustomerProfile>();
+        for (OrderItem oi : orderitems) {
+            CustomerProfile cp = oi.getCustomerProfile();
+            allCustomers.add(cp);
+        }
+
+        return allCustomers;
+    }
+
     public int getSalesVolume() {
         int sum = 0;
         for (OrderItem oi : orderitems) {
-            sum = sum + oi.getOrderItemTotal(); // positive and negative values
+            sum = sum + oi.getOrderItemTotal();
         }
         return sum;
+    }
+
+    public int getQuantity() {
+        int totalQuantity = 0;
+        for (OrderItem oi : orderitems) {
+            totalQuantity = totalQuantity + oi.getQuantity();
+        }
+        return totalQuantity;
     }
 
     public void setName(String n) {

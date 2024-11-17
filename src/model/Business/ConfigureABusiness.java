@@ -82,7 +82,7 @@ public class ConfigureABusiness {
         int randomCp = pickRandomNumber(121, 150);
         int randomTp = pickRandomNumber(90, 140);
 
-        pd.newProduct("Product " + index + " by " + randomSupplier.getName(), randomFp, randomCp, randomTp);
+        pd.newProduct("Product " + index, randomFp, randomCp, randomTp);
       }
 
     }

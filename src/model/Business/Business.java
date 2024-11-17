@@ -122,8 +122,8 @@ public class Business {
         System.out.println("--------------------------------------------------------------------");
         System.out.println("---- Business Information ------------------------------------------");
         suppliers.printSupplierInformation(5);
-        customerdirectory.printCustomerInformation(5);
-        masterorderlist.printOrderInformation();
+        // customerdirectory.printCustomerInformation(5);
+        // masterorderlist.printOrderInformation();
 
     }
 

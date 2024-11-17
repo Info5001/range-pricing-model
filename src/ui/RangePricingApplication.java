@@ -7,6 +7,8 @@ package ui;
 
 import model.Business.Business;
 import model.Business.ConfigureABusiness;
+import model.Supplier.SupplierDirectory;
+import model.Supplier.SuppliersReport;
 
 /**
  *
@@ -20,9 +22,14 @@ public class RangePricingApplication {
   public static void main(String[] args) {
     // TODO code application logic here
 
-    Business wayFair = ConfigureABusiness.initialize("WayFair", 200, 500, 50, 200, 500, 10);
+    Business wayFair = ConfigureABusiness.initialize("WayFair", 5, 20, 5, 200, 500, 10);
 
-    wayFair.printBusinessInformation();
+    // wayFair.printBusinessInformation();
+
+    SupplierDirectory sd = wayFair.getSupplierDirectory();
+
+    SuppliersReport demoReport = sd.generateSuppliersReport();
+    demoReport.printReport();
 
   }
 
