@@ -50,7 +50,6 @@ public class SupplierDirectory {
         for (Supplier eachSupplier : suppliers) {
             newReport.addSupplier(eachSupplier);
         }
-        newReport.sortByTopSales();
 
         return newReport;
     }

@@ -16,7 +16,7 @@ public class SuppliersReport {
     SupplierSummary newSummary = new SupplierSummary(s);
     summaryList.add(newSummary);
 
-    // Do we need any "post-processing"???
+    sortByTopSales();
   }
 
   public void printReport() {
