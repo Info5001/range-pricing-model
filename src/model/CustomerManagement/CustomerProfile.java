@@ -73,6 +73,20 @@ public class CustomerProfile {
         return person;
     }
         
-        
+    public void printCustomerOrders () {
+
+        for (int i=0; i<orders.size(); i++){
+            Order eachOrder = orders.get(i);
+            int index = i + 1;
+            System.out.println("---- Order #" + index);
+            eachOrder.printOrderDetails();
+
+        }
+
+
+
+    }
+
+
     
 }

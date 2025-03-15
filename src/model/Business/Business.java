@@ -113,4 +113,9 @@ public class Business {
         return employeedirectory;
     }
 
+
+    public String getName() {
+        return name;
+    }
+
 }

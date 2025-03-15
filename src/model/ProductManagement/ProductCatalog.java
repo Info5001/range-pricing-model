@@ -30,6 +30,7 @@ public class ProductCatalog {
         products.add(p);
         return p;
     }
+
     public Product newProduct(String n, int fp, int cp, int tp) {
         Product p = new Product(n,fp, cp, tp);
         products.add(p);
@@ -49,6 +50,15 @@ public class ProductCatalog {
 
     public ArrayList<Product> getProductList(){
         return products;
+    }
+
+    public int getTotalSales() {
+        int sum = 0;
+
+        for (Product eachProduct: products) {
+            sum = sum + eachProduct.getSalesVolume();
+        }
+        return sum;
     }
 
 }

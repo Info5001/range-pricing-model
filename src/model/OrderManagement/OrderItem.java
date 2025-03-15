@@ -78,5 +78,10 @@ public class OrderItem {
     public int getQuantity() {
         return quantity;
     }
+
+    public void printDetails(){
+        System.out.println(selectedproduct.getName() + " | " + actualPrice + " | " + quantity);
+
+    }
     
 }
