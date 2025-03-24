@@ -6,6 +6,7 @@
 package model.ProductManagement;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -14,17 +15,19 @@ import java.util.ArrayList;
 public class ProductCatalog {
 
     String type;
-    ArrayList<Product> products; //list of products initially empty
+    ArrayList<Product> products; // list of products initially empty
 
     public ProductCatalog(String n) {
         type = n;
-         products = new ArrayList();  ///create the list of elements otherwise it is null
+        products = new ArrayList(); /// create the list of elements otherwise it is null
     }
-// new ProductCatalog(); or new ProductCatalog("Printers");
-    public ProductCatalog(    ) {
+
+    // new ProductCatalog(); or new ProductCatalog("Printers");
+    public ProductCatalog() {
         type = "unknown";
         products = new ArrayList();
     }
+
     public Product newProduct(int fp, int cp, int tp) {
         Product p = new Product(fp, cp, tp);
         products.add(p);
@@ -32,7 +35,7 @@ public class ProductCatalog {
     }
 
     public Product newProduct(String n, int fp, int cp, int tp) {
-        Product p = new Product(n,fp, cp, tp);
+        Product p = new Product(n, fp, cp, tp);
         products.add(p);
         return p;
     }
@@ -48,17 +51,41 @@ public class ProductCatalog {
         return productsreport;
     }
 
-    public ArrayList<Product> getProductList(){
+    public ArrayList<Product> getProductList() {
         return products;
     }
 
     public int getTotalSales() {
         int sum = 0;
 
-        for (Product eachProduct: products) {
+        for (Product eachProduct : products) {
             sum = sum + eachProduct.getSalesVolume();
         }
         return sum;
+    }
+
+    public void printProductCatalogInfo() {
+        System.out.println(" - - Product Catalog: ");
+
+        // Product productWithMinPrice = products.get(0);
+
+        // for (Product p : products) {
+        // if (p.getFloorPrice() < productWithMinPrice.getFloorPrice()) {
+        // productWithMinPrice = p;
+        // }
+        // }
+
+        // System.out.println("Minimum floor price " +
+        // productWithMinPrice.getFloorPrice());
+
+        Collections.sort(products, new ProductComparator());
+        System.out.println("Minimum floor price " + products.get(products.size() - 1).getFloorPrice());
+
+        for (int i = 1; i <= products.size(); i++) {
+            Product eachProduct = products.get(i - 1);
+            System.out.print(i + ". ");
+            eachProduct.printProductInfo();
+        }
     }
 
 }

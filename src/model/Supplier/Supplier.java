@@ -52,11 +52,18 @@ public class Supplier {
         return productcatalog.getTotalSales();
     }
 
-
     // update supplier product ...
     @Override
     public String toString() {
         return name;
 
     }
+
+    public void printSupplierInformation() {
+        System.out.println(" - Supplier: " + name);
+        System.out.println("--------------------------------------------------");
+        productcatalog.printProductCatalogInfo();
+        // TODO add line to print product catalog information
+    }
+
 }

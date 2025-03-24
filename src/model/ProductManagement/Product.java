@@ -116,8 +116,12 @@ public class Product {
         return ceilingPrice;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
+    }
+
+    public void printProductInfo() {
+        System.out.println(name + " - " + " fp: " + floorPrice + " cp: " + ceilingPrice + " tp: " + targetPrice);
     }
 
 }

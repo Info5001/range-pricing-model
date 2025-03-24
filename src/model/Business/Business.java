@@ -46,7 +46,7 @@ public class Business {
         name = n;
         masterorderlist = new MasterOrderList();
         suppliers = new SupplierDirectory();
-//        solutionoffercatalog = new SolutionOfferCatalog();
+        // solutionoffercatalog = new SolutionOfferCatalog();
         persondirectory = new PersonDirectory();
         customerdirectory = new CustomerDirectory(this);
         salespersondirectory = new SalesPersonDirectory(this);
@@ -68,6 +68,7 @@ public class Business {
     public UserAccountDirectory getUserAccountDirectory() {
         return useraccountdirectory;
     }
+
     public MarketingPersonDirectory getMarketingPersonDirectory() {
         return marketingpersondirectory;
     }
@@ -94,7 +95,7 @@ public class Business {
 
     public int getHowManySupplierProductsAlwaysAboveTarget(String n) {
         ProductsReport productsreport = getSupplierPerformanceReport(n); // see above
-        int i = productsreport.getProductsAlwaysAboveTarget().size(); //return size of the arraylist
+        int i = productsreport.getProductsAlwaysAboveTarget().size(); // return size of the arraylist
         return i;
     }
 
@@ -109,13 +110,28 @@ public class Business {
     public MasterOrderList getMasterOrderList() {
         return masterorderlist;
     }
-        public EmployeeDirectory getEmployeeDirectory() {
+
+    public EmployeeDirectory getEmployeeDirectory() {
         return employeedirectory;
     }
-
 
     public String getName() {
         return name;
     }
 
+    public void printBusinessInformation() {
+        System.out.println();
+        System.out.println("Business: " + name);
+        System.out.println("--------------------------------------------------");
+
+        suppliers.printSupplierDirectoryInformation();
+        customerdirectory.printCustomerDirectoryInfo();
+        // Print list of suppliers +
+        // for each supplier - print list of products +
+
+        // Print list of customers +
+        // Print orders +
+        // for each order pring orderitems
+
+    }
 }
